@@ -3,7 +3,10 @@
   "version": "1.7.0",
   "description": "Floating input for coc.nvim",
   "author": "Weirong Xu <weirongxu.raidou@gmail.com>",
-  "repository": "git@github.com:weirongxu/coc-floatinput.git",
+  "contributors": [
+    "Phoenix Xu <xusiyuan841028@gmail.com>"
+  ],
+  "repository": "git@github.com:xusiyuan841028/coc-floatinput.git",
   "license": "MIT",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",

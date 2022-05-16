@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const os = require('os');
+const path = require('path');
+
+const homedir = os.homedir();
 exports.build = (production) => {
   require('esbuild')
     .build({
@@ -10,7 +14,7 @@ exports.build = (production) => {
       entryPoints: ['./src/index.ts'],
       bundle: true,
       external: ['coc.nvim'],
-      outfile: 'lib/index.js',
+      outfile: path.resolve(os.homedir(), '.config/coc/extensions/node_modules/coc-floatinput', 'lib/index.js'),
     })
     // eslint-disable-next-line no-console
     .catch(console.error);

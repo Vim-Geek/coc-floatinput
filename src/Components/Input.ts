@@ -221,7 +221,7 @@ export abstract class Input<Value> extends BaseComponent<
   ): Promise<MultiFloatingWindow.OpenOptions> {
     const targetMode = (await workspace.nvim.mode).mode as MapMode;
 
-    const width = options.width ?? 30;
+    const width = options.width ?? 80;
     let inputTop = 0;
     const finalOptions: MultiFloatingWindow.OpenOptions = {
       relative: options.relative ?? 'center',
@@ -282,13 +282,14 @@ export abstract class Input<Value> extends BaseComponent<
       initedExecute: () => `
         call setbufvar(${inputBufnr}, '&buftype', '')
         call setbufvar(${inputBufnr}, '&wrap', 1)
-        nmap <silent><buffer> <CR> :call CocAction('runCommand', '${Input.actionCmd}', 'ok', ${inputBufnr}, 'n', '${targetMode}')<CR>
-        imap <silent><buffer> <CR> <C-o>:call CocAction('runCommand', '${Input.actionCmd}', 'ok', ${inputBufnr}, 'i', '${targetMode}')<CR>
-        nmap <silent><buffer> <ESC> :call CocAction('runCommand', '${Input.actionCmd}', 'cancel', ${inputBufnr}, 'n', '${targetMode}')<CR>
-        imap <silent><buffer> <C-c> <C-o>:call CocAction('runCommand', '${Input.actionCmd}', 'cancel', ${inputBufnr}, 'i', '${targetMode}')<CR>
+        nnoremap <silent><buffer> <CR> :call CocAction('runCommand', '${Input.actionCmd}', 'ok', ${inputBufnr}, 'n', '${targetMode}')<CR>
+        inoremap <silent><buffer> <CR> <C-o>:call CocAction('runCommand', '${Input.actionCmd}', 'ok', ${inputBufnr}, 'i', '${targetMode}')<CR>
+        nnoremap <silent><buffer> <ESC> :call CocAction('runCommand', '${Input.actionCmd}', 'cancel', ${inputBufnr}, 'n', '${targetMode}')<CR>
+        inoremap <silent><buffer> <C-c> <C-o>:call CocAction('runCommand', '${Input.actionCmd}', 'cancel', ${inputBufnr}, 'i', '${targetMode}')<CR>
         call feedkeys('A')
       `,
     };
+
 
     if (options.completion) {
       if (this.completionDisposable) {

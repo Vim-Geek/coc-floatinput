@@ -29,7 +29,8 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(__dirname, 'lib'),
+    // path: path.join(__dirname, 'lib'),
+    path: path.join('/Users/xusiyuan/.config/coc/extensions/node_modules/coc-floatinput', 'lib'),
     filename: 'index.js',
     libraryTarget: 'commonjs',
   },
